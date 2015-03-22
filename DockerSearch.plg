@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "docker_search">
 <!ENTITY author    "Squid">
-<!ENTITY version   "2015.03.21">
+<!ENTITY version   "2015.03.21-1">
 <!ENTITY launch    "Settings/Docker2XML">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/DockerSearch/master/DockerSearch.plg">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -12,6 +12,8 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
+###2015.03.21###
+- Miscellaneous bug fixes
 ###2015.03.21###
 - Initial Version
 
