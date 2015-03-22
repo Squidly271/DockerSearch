@@ -16,8 +16,8 @@ The XML template will be available under Docker2XML when adding a new container.
 
 <?PHP
 ?>
-<?$cmd = 'plugins/docker_search/scripts/search.sh ';?>
-<?$cmd1 = 'plugins/docker_search/scripts/convert.sh ';?>
+<?$cmd = '/usr/local/emhttp/plugins/docker_search/scripts/search.sh ';?>
+<?$cmd1 = '/usr/local/emhttp/plugins/docker_search/scripts/convert.sh ';?>
 
 <form method="POST" action="/update.htm" target="progressFrame">
 
