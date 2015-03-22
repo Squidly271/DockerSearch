@@ -1,11 +1,18 @@
 #!/bin/bash
 
-DOCKERFILE="$1/dockerfile/raw"
+# Handle the condition if the URL if the URL ends in "/"
+
+DOCKER=$1
+if [ "$(echo "${DOCKER: -1}")" == "/" ]
+then
+	DOCKERFILE="$1dockerfile/raw"
+else
+	DOCKERFILE="$1/dockerfile/raw"
+fi
+
 
 echo "Converting $DOCKERFILE"
-echo ""
-echo ""
-echo "*********************************************************************"
+echo "<hr />"
 if ! wget $DOCKERFILE -O /tmp/dockerfile
 then
 	echo ""
@@ -18,7 +25,7 @@ then
 	exit 1
 fi
 
-echo "*********************************************************************"
+echo "<hr />"
 
 
 DOCKERNAME=$(basename $(echo "$DOCKERFILE" | sed -e "s/\/[^\/]*$//" | sed -e "s/\/[^\/]*$//"))
@@ -156,8 +163,7 @@ then
 fi
 
 echo ""
-echo "*********************************************************************"
-echo ""
+echo "<hr />"
 mv "$OUTPUT" "$CONVERTED"
 echo "Converted file now available at $CONVERTED"
 echo ""

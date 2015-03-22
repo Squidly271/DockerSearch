@@ -43,10 +43,11 @@ fi
 
 echo "<b><p><font size=6>Search results for $1: $RESULTS</font></p>"
 echo "Search results may be limited by docker search.  More results may be available at on Docker's website<br>"
+echo "<hr />"
 
 OutputResults
 
-echo ""
+echo "<hr />"
 echo "Clicking the link will take you to the associated docker page."
 echo ""
 echo "Copy the link address, close the window and paste it into the \"Convert\" text box to convert the Docker File to an XML template for use in unRAID"
