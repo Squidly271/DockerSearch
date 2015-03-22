@@ -1,5 +1,5 @@
 enu="Utilities"
-Title="Docker Search"
+Title="DockerSearch"
 Icon="docker2xml.png"
 ---
 <?PHP
