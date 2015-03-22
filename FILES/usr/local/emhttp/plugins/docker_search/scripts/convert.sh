@@ -28,7 +28,10 @@ fi
 echo "<hr />"
 
 
-DOCKERNAME=$(basename $(echo "$DOCKERFILE" | sed -e "s/\/[^\/]*$//" | sed -e "s/\/[^\/]*$//"))
+# DOCKERNAME=$(basename $(echo "$DOCKERFILE" | sed -e "s/\/[^\/]*$//" | sed -e "s/\/[^\/]*$//"))
+
+DOCKERNAME="$(basename $(dirname "${DOCKER}"))-$(basename ${DOCKER})"
+
 REGISTRY=$(echo "$DOCKERFILE" | sed -e "s/\/[^\/]*$//" | sed -e "s/\/[^\/]*$//")
 REPOSITORY="$(echo "$REGISTRY" | grep -oP '(?<=https:\/\/registry.hub.docker.com\/u\/)\w+')"
 
@@ -155,7 +158,7 @@ fi
 
 echo "</Container>" >> $OUTPUT
 
-CONVERTED="/boot/config/plugins/dockerMan/templates/Docker2XML/Docker2XML-$DOCKERNAME.xml"
+CONVERTED="/boot/config/plugins/dockerMan/templates/Docker2XML/$DOCKERNAME.xml"
 
 if [ ! -d /boot/config/plugins/dockerMan/templates/Docker2XML/ ]
 then
