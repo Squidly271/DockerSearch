@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKERFILE="$1dockerfile/raw"
+DOCKERFILE="$1/dockerfile/raw"
 
 echo "Converting $DOCKERFILE"
 echo ""
