@@ -1,0 +1,90 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "docker_search">
+<!ENTITY author    "Squid">
+<!ENTITY version   "2015.03.21">
+<!ENTITY launch    "Settings/Docker Search">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/Docker2XML/master/Docker2XML.plg">
+<!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
+
+<CHANGES>
+###2015.03.21###
+- Initial Version
+
+</CHANGES>
+
+<!--
+Copyright 2015, Squid Software
+Docker Search - Search the docker registry for a container and then convert it into an unRAID XML template
+-->
+
+<!--
+The 'pre-install' script.
+-->
+
+<FILE Name="&plugdir;/README.md">
+<INLINE>
+####Docker Search####
+Search the Docker Registry for a container, and optionally convert it to an unRAID compatible XML template file
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash">
+<INLINE>
+
+# Remove old 'source' files
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version;')
+</INLINE>
+</FILE>
+
+<!--
+The 'source' file.
+-->
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
+<URL>https://github.com/Squidly271/Docker2XML/raw/master/Docker2XML.txz</URL>
+</FILE>
+
+
+<!--
+The 'post-install' script.
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been installed."
+echo " Copyright 2015, Squid Software"
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+
+# Remove plugin related files
+rm -rf /boot/config/plugins/&name;
+rm -f /tmp/plugins/&name;.plg
+
+# Uninstall the 'source' package
+removepkg &name;-&version;
+</INLINE>
+</FILE>
+
+</PLUGIN>
+
+
+
+
+
+
