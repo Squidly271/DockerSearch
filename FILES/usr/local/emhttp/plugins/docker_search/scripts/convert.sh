@@ -143,8 +143,8 @@ else
 	echo "Could not accurately determine WebUI Port"
 fi
 
-	echo "	<Icon>https://raw.githubusercontent.com/Squidly271/Docker2XML/master/docker.png</Icon>" >> $OUTPUT
-	echo "	<Banner>https://raw.githubusercontent.com/Squidly271/Docker2XML/master/docker_banner.png</Banner>" >> $OUTPUT
+	echo "	<Icon>https://raw.githubusercontent.com/Squidly271/DockerSearch/master/docker.png</Icon>" >> $OUTPUT
+	echo "	<Banner>https://raw.githubusercontent.com/Squidly271/DockerSearch/master/docker_banner.png</Banner>" >> $OUTPUT
 
 echo "</Container>" >> $OUTPUT
 

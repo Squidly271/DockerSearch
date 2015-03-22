@@ -5,7 +5,7 @@
 <!ENTITY author    "Squid">
 <!ENTITY version   "2015.03.21">
 <!ENTITY launch    "Settings/Docker Search">
-<!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/Docker2XML/master/Docker2XML.plg">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/DockerSearch/master/DockerSearch.plg">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 ]>
 
