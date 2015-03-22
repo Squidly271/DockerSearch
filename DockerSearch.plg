@@ -12,10 +12,15 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
+###2015.03.22-1###
+- Better formatting.  Significantly improved error handling
+
 ###2015.03.22###
--Added more formatting and descriptions (where they exist) to the output
+- Added more formatting and descriptions (where they exist) to the output
+
 ###2015.03.21###
 - Miscellaneous bug fixes
+
 ###2015.03.21###
 - Initial Version
 

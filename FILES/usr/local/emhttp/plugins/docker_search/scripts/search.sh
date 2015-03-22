@@ -1,30 +1,51 @@
 #!/bin/bash
 
-docker search --no-trunc=true --automated=true $1 > /tmp/search
+
+function OutputResults {
 
 LINENUM="0"
 
-echo "<b><font size=14>Search results for $1</font></b>"
-echo ""
 cat /tmp/search | while read LINE
 do
-	if [ "$LINENUM" -eq "0" ]
-	then
-#		echo -e "\t\t\t\t$LINE"
-#		echo -e ""
+        if [ "$LINENUM" -eq "0" ]
+        then
+# don't output the header line
+                LINENUM="1"
+                continue
+        else
+                REPOSITORY=$(echo "$LINE" | cut -d " " -f1)
+       	        EVERYTHINGELSE=$(echo "$LINE" | sed 's/[^ ]* //' | sed 's/.\{25\}$//')
+               	echo "<font size=3><u><a href=\"https://registry.hub.docker.com/u/$REPOSITORY\" target=\"_blank\">https://registry.hub.docker.com/u/$REPOSITORY</a></u></font><span style='color: #E80000;'> $EVERYTHINGELSE</span> "
 
-		LINENUM="1"
-		continue
-	else
+		if [[ $LINE != *"[OK]"* ]]
+		then
+			echo "<span style='color: #E80000;'>Incompatible with the conversion engine</span>"
+		fi
 
-		REPOSITORY=$(echo "$LINE" | cut -d " " -f1)
-		EVERYTHINGELSE=$(echo "$LINE" | sed 's/[^ ]* //' | sed 's/.\{25\}$//')
-		echo "<font size=3><u><a href=\"https://registry.hub.docker.com/u/$REPOSITORY\" target=\"_blank\">https://registry.hub.docker.com/u/$REPOSITORY</a></u></font><span style='color: #E80000;'> $EVERYTHINGELSE</span> "
 		echo ""
-	fi
+        fi
 
 done
-echo "</table>"
+}
+
+exec 2>/dev/null
+docker search --no-trunc=true --automated=true $1 > /tmp/search
+
+RESULTS=$(grep -c ^ /tmp/search)
+RESULTS=$((RESULTS-1))
+
+if [ $RESULTS = -1 ]
+then
+	echo "<b><p><font size=6>Invalid Search Term</font></p></b>"
+	exit
+fi
+
+
+echo "<b><p><font size=6>Search results for $1: $RESULTS</font></p>"
+echo "Search results may be limited by docker search.  More results may be available at on Docker's website<br>"
+
+OutputResults
+
 echo ""
 echo "Clicking the link will take you to the associated docker page."
 echo ""

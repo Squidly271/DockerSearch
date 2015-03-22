@@ -10,6 +10,11 @@ This plugin provides basic search and conversion functions for any docker contai
 
 After entering a search string and pressing search, a new window will pop up with the results.  Click on the links to examine the associated docker page.  NOTE: Only automated docker builds (compatible with the conversion engine) will be listed.
 
+Search results are sorted according the Docker's "STAR" rating system.
+
+###Note: Searches are artificially limited by docker to around 25 results.  More results may be available on Docker's website
+
+
 To convert the dockerfile to an unRaid compatible XML template file, copy the link and paste it into the convert box.
 
 The XML template will be available under Docker2XML when adding a new container.
