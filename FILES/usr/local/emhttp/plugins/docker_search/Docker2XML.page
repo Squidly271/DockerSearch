@@ -24,7 +24,7 @@ The XML template will be available under Docker2XML when adding a new container.
 Search String
 : <input id="search" type="text" name="other" maxlength="200" value="<?=$cfg['other']?>">
 
-<input type="button" name="submit_button" value="Search" onclick="openBox('<?=$cmd?>'+document.getElementById('search').value,'Docker 2 XML',800,600)">
+<input type="button" name="submit_button" value="Search" onclick="openBox('<?=$cmd?>'+document.getElementById('search').value,'Docker Search')">
 
 
 Docker File To Convert
