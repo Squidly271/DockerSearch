@@ -40,7 +40,7 @@ then
 	exit
 fi
 
-
+echo "<img src=/plugins/docker_search/images/dockerlogo.png>"
 echo "<b><p><font size=6>Search results for $1: $RESULTS</font></p>"
 echo "Search results may be limited by docker search.  More results may be available at on Docker's website<br>"
 echo "<hr />"
