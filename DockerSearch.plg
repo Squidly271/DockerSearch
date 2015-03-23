@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "docker_search">
 <!ENTITY author    "Squid">
-<!ENTITY version   "2015.03.22-2">
+<!ENTITY version   "2015.03.22-3">
 <!ENTITY launch    "Settings/Docker2XML">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/DockerSearch/master/DockerSearch.plg">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -12,6 +12,11 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
+###2015.03.22-3###
+- Formatting now (hopefully) finalized on search
+- Fixed Docker Search's moronic idea of insisting search patterns are always lowercase
+- Added Docker's Star Rating system to search output
+
 ###2015.03.22-2###
 
 ###2015.03.22-1###
