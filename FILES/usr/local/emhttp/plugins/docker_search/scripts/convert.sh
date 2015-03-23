@@ -55,8 +55,10 @@ mv /tmp/dockerfile1 /tmp/dockerfile
 
 # Get the exposed ports.  Other ports are assumed to be TCP ** Not specified by docker file **
 
-PORTLIST="$(cat /tmp/dockerfile | grep "EXPOSE")"
-MYPORTS="$(echo "$PORTLIST" | sed 's/EXPOSE//')"
+PORTLIST="$(cat /tmp/dockerfile | grep "EXPOSE" )"
+
+MYPORTS="$(echo "$PORTLIST" | sed 's/EXPOSE//' | sed -e 's/ / EXPOSE /g' | sed -e 's/ EXPOSE/\nEXPOSE/g' | sed 's/EXPOSE//')"
+
 TCPPORTS="$(echo "$MYPORTS" | egrep -i "/tcp" | sed 's/^.//' | sed 's/.\{4\}$//')"
 UDPPORTS="$(echo "$MYPORTS" | egrep -i "/udp" | sed 's/^.//' | sed 's/.\{4\}$//')"
 OTHERPORTS="$(echo "$MYPORTS" | egrep -v -i "/tcp" | egrep -v -i "/udp" |sed 's/^.//')"
