@@ -6,18 +6,19 @@ Icon="docker2xml.png"
 /* Copyright 2015 Squid Software
  */
 ?>
-This plugin provides basic search and conversion functions for any docker container located at <u><a href=https://registry.hub.docker.com/ target=_blank>https://registry.hub.docker.com/</a></u>
-
-After entering a search string and pressing search, a new window will pop up with the results.  Click on the links to examine the associated docker page.  NOTE: Only automated docker builds (compatible with the conversion engine) will be listed.
-
-Search results are sorted according the Docker's "STAR" rating system.
-
-###Note: Searches are artificially limited by docker to around 25 results.  More results may be available on Docker's website
-
-
-To convert the dockerfile to an unRaid compatible XML template file, copy the link and paste it into the convert box.
-
+<font size=3>This plugin provides search and conversion functions for any docker container located at <u><a href=https://registry.hub.docker.com/ target=_blank>https://registry.hub.docker.com/</a></u>
+<br><br>
+After entering a search string and pressing "Search", a new window window will pop up with the results.<br>
+The results page is a condensed search which is limited to a maximum of 25 entries and only displays the results for searches of the repositories and container names.
+<br><br>
+A link is present on the results page to take you the full results of a web search on docker's website.
+<br><br>
+To convert the dockerfile to an unRaid compatible XML template file, copy the link (either from the condensed search results or the URL in your browser of the container if you did a full search and paste it into the convert box and press Convert.
+<br><br>
 The XML template will be available under Docker2XML when adding a new container.
+<br><br><br>
+Plugin Support Thread: <u><a href=http://lime-technology.com/forum/index.php?topic=38879.0 target=_blank>http://lime-technology.com/forum/index.php?topic=38879.0</a></u>
+<br><br><br>
 
 <?PHP
 ?>

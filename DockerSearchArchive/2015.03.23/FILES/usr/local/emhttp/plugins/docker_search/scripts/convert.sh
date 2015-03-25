@@ -1,106 +1,42 @@
 #!/bin/bash
 
+# Handle the condition if the URL if the URL ends in "/"
+
 DOCKER=$1
-
-echo "<b>Finding the correct path"
-echo ""
-
-# Figure out what path was actually passed to us
-
-LAST=$(dirname $DOCKER)
-NEXTLAST=$(dirname $LAST)
-THIRDLAST=$(dirname $NEXTLAST)
-FOURTHLAST=$(dirname $THIRDLAST)
-FIFTHLAST=$(dirname $FOURTHLAST)
-
-echo "$DOCKER"
-
-until [ "$FIFTHLAST" == "." ];
-do
-	DOCKER="$LAST"
-	LAST=$(dirname $DOCKER)
-	NEXTLAST=$(dirname $LAST)
-	THIRDLAST=$(dirname $NEXTLAST)
-	FOURTHLAST=$(dirname $THIRDLAST)
-	FIFTHLAST=$(dirname $FOURTHLAST)
-	echo "$DOCKER"
-done
-
-echo ""
-
-# Handle the condition if the path ends in /
-
-ENDINGOFFILE="dockerfile/raw"
-
 if [ "$(echo "${DOCKER: -1}")" == "/" ]
 then
-        DOCKERFILE="$DOCKER$ENDINGOFFILE"
+	DOCKERFILE="$1dockerfile/raw"
 else
-        DOCKERFILE="$DOCKER/$ENDINGOFFILE"
+	DOCKERFILE="$1/dockerfile/raw"
 fi
 
 
-echo "<b>Corrected path is $DOCKERFILE"
-echo ""
-if [[ "$DOCKERFILE" == "https://registry.hub.docker.com/_/"* ]]
-then
-	echo ""
-        echo "<b>Official Status:    Official"
-        echo ""
-        echo "<b>Offical containers are not currently supported"
-	echo ""
-        echo "<b>Exiting"
-        exit
-fi
-
+echo "Converting $DOCKERFILE"
 echo "<hr />"
-echo "<b>Downloading $DOCKERFILE"
-echo ""
-
-
 if ! wget $DOCKERFILE -O /tmp/dockerfile
 then
 	echo ""
 	echo ""
-	echo "<b>Could not download the dockerfile"
+	echo "Could not download the dockerfile"
 	echo ""
-	echo "<b>$DOCKERFILE"
+	echo "$DOCKERFILE"
 	echo ""
-	echo "<b>Bad URL?"
+	echo "Bad URL?"
 	exit 1
 fi
 
-echo "<b>Downloaded"
 echo "<hr />"
+
+
+DOCKERNAME=$(basename $(echo "$DOCKERFILE" | sed -e "s/\/[^\/]*$//" | sed -e "s/\/[^\/]*$//"))
 
 DOCKERFILENAME="$(basename $(dirname "${DOCKER}"))-$(basename ${DOCKER})"
 
 REGISTRY=$(echo "$DOCKERFILE" | sed -e "s/\/[^\/]*$//" | sed -e "s/\/[^\/]*$//")
 REPOSITORY="$(echo "$REGISTRY" | grep -oP '(?<=https:\/\/registry.hub.docker.com\/u\/)\w+')"
 
-DOCKERNAME=$(basename "$REGISTRY")
-
 OUTPUT="/tmp/$DOCKERNAME"
 
-echo "Docker Name:        <b>$DOCKERNAME"
-echo "Docker Registry:    <b>$REGISTRY"
-echo "Docker Repostitory: <b>$REPOSITORY"
-echo "Template Filename:  <b>$DOCKERFILENAME"
-if $(echo "$DOCKERFILE" | grep "https://registry.hub.docker.com/_/" )
-then
-	echo "Official Status:    <b>Official"
-	echo ""
-	echo "Offical containers are not currently supported"
-	echo "exiting"
-	exit
-else
-	echo "Official Status:    <b>Unofficial"
-fi
-
-echo "<hr />"
-
-
- 
 # Remove commented out lines from the docker file
 
 cat "/tmp/dockerfile" | while read LINE
@@ -159,7 +95,7 @@ do
 	echo "			<Protocol>tcp</Protocol>" >> $OUTPUT
 	echo "		</Port>" >> $OUTPUT
 
-	echo "Added TCP Port: <b>$PORT"
+	echo "Added TCP Port: $PORT"
 
 	NUMPORTS=$((NUMPORTS+1))
 done
@@ -174,7 +110,7 @@ do
 
 	NUMPORTS=$((NUMPORTS+1))
 
-	echo "Added UDP Port: <b>$PORT"
+	echo "Added UDP Port: $PORT"
 done
 
 for PORT in $OTHERPORTS
@@ -187,7 +123,7 @@ do
 
 	NUMPORTS=$((NUMPORTS+1))
 
-	echo "Added TCP Port: <b>$PORT"
+	echo "Added TCP Port: $PORT"
 done
 echo "		</Publish>" >> $OUTPUT
 echo "	</Networking>" >> $OUTPUT
@@ -203,7 +139,7 @@ do
 	echo "		<Mode>rw</Mode>" >> $OUTPUT
 	echo "	</Volume>" >> $OUTPUT
 
-	echo "Added Container Volume: <b>$VOLUME"
+	echo "Added Container Volume :$VOLUME"
 done
 
 echo "	</Data>" >> $OUTPUT
@@ -214,9 +150,9 @@ if [ $NUMPORTS -eq 1 ]
 then
 	echo "	<WebUI>http://[IP]:[PORT:$PORT]</WebUI>" >> $OUTPUT
 
-	echo "Added WebUI port: <b>$PORT"
+	echo "Added WebUI port: $PORT"
 else
-	echo "<b>Could not accurately determine WebUI Port"
+	echo "Could not accurately determine WebUI Port"
 fi
 
 	echo "	<Icon>https://raw.githubusercontent.com/Squidly271/DockerSearch/master/docker.png</Icon>" >> $OUTPUT
@@ -234,9 +170,9 @@ fi
 echo ""
 echo "<hr />"
 mv "$OUTPUT" "$CONVERTED"
-echo "<b>Converted file now available at $CONVERTED"
+echo "Converted file now available at $CONVERTED"
 echo ""
-echo "<b>After loading the template, make sure you assign the Host Volume Paths and double-check the Host Port Assignments"
+echo "After loading the template, make sure you assign the Host Volume Paths and double-check the Host Port Assignments"
 echo ""
 rm /tmp/dockerfile
 

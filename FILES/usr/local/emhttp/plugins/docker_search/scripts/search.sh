@@ -33,48 +33,58 @@ done
 echo "</font>"
 }
 
+# Main Program
+
+
 # kill any error messages from docker search
 exec 2>/dev/null
 
-SEARCHTERM=$1
+# docker search only allows one word to be searched for - grr
+DOCKERSEARCHTERM="$1"
 
-# Convert search term to lower case.  Upper case is not allowed
-
-SEARCHTERM="$(echo "$SEARCHTERM" | tr '[:upper:]' '[:lower:]')"
-
-docker search --no-trunc=false --automated=true "$SEARCHTERM" > /tmp/search
+docker search --no-trunc=false --automated=true "$DOCKERSEARCHTERM" > /tmp/search
 
 RESULTS=$(grep -c ^ /tmp/search)
 RESULTS=$((RESULTS-1))
+
+# Combine all search parameters into one line
+
+NICESEARCHTERM="$*"
+
+# Convert search term to lower case, and replace spaces with +
+
+SEARCHTERM="$(echo "$NICESEARCHTERM" | tr '[:upper:]' '[:lower:]' | sed -e 's/ /+/g')"
 
 echo "<center><img src=/plugins/docker_search/images/dockerlogo.png></center>"
 
 if [ $RESULTS = -1 ]
 then
-	echo "<center><b><p><font size=6>Invalid Search Term $1</font></p></b><center>"
+	echo "<center><b><p><font size=6>Invalid Search Term \"$NICESEARCHTERM\"</font></p></b><center>"
+
 	exit
 fi
 
 if [ $RESULTS = 0 ]
 then
-	echo "<center><b><p><font size=6>There were no results for $1</font></p></b></center>"
-        echo "<center>Try broadening your search criteria</center>"
+	echo "<center><b><p><font size=6>There were no results for \"$NICESEARCHTERM\"</font></p></b></center>"
+	echo "<center><font size =4>For full search results, click  <u><a href=\"https://registry.hub.docker.com/search?q=$SEARCHTERM&s=stars\" target=\"_blank\">HERE</a></u>"
+        echo "<center><font size =4>Or try broadening your search criteria</center>"
 
         exit
 fi
 
-echo "<center><b><p><font size=6> Search results for $1: $RESULTS </font></p></b></center>"
+echo "<center><b><p><font size=4>Condensed Search results for \"$NICESEARCHTERM\": $RESULTS </font></p></b></center>"
 
-echo "<center>Search results may be limited by docker search.  More results may be available on Docker's website<br></center>"
+echo "<center><font size =4>For full search results, click  <u><a href=\"https://registry.hub.docker.com/search?q=$SEARCHTERM&s=stars\" target=\"_blank\">HERE</a></u>"
+
 echo "<hr />"
 
 OutputResults
 
+echo "<center><font size=3>Clicking the link will take you to the associated docker page.</center>"
+echo "<center><font size=3>Copy the link address, close the window and paste it into the \"Convert\" text box to convert the Docker File to an XML template for use in unRAID</center>"
 echo "<hr />"
-echo "<center>Clicking the link will take you to the associated docker page.</center>"
-echo ""
-echo "<center>Copy the link address, close the window and paste it into the \"Convert\" text box to convert the Docker File to an XML template for use in unRAID</center>"
-echo ""
+echo "<center><font size =4>For full search results, click  <u><a href=\"https://registry.hub.docker.com/search?q=$SEARCHTERM&s=stars\" target=\"_blank\">HERE</a></u>"
 
 echo "<div style=\"text-align: right; direction: ltr; margin-left: 1em;\"><img src=/plugins/docker_search/images/Chode_300.gif></div>"
 

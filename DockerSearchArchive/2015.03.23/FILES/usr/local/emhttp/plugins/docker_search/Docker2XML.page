@@ -1,0 +1,41 @@
+Menu="Utilities"
+Title="DockerSearch"
+Icon="docker2xml.png"
+---
+<?PHP
+/* Copyright 2015 Squid Software
+ */
+?>
+This plugin provides basic search and conversion functions for any docker container located at <u><a href=https://registry.hub.docker.com/ target=_blank>https://registry.hub.docker.com/</a></u>
+
+After entering a search string and pressing search, a new window will pop up with the results.  Click on the links to examine the associated docker page.  NOTE: Only automated docker builds (compatible with the conversion engine) will be listed.
+
+Search results are sorted according the Docker's "STAR" rating system.
+
+###Note: Searches are artificially limited by docker to around 25 results.  More results may be available on Docker's website
+
+
+To convert the dockerfile to an unRaid compatible XML template file, copy the link and paste it into the convert box.
+
+The XML template will be available under Docker2XML when adding a new container.
+
+<?PHP
+?>
+<?$cmd = '/usr/local/emhttp/plugins/docker_search/scripts/search.sh ';?>
+<?$cmd1 = '/usr/local/emhttp/plugins/docker_search/scripts/convert.sh ';?>
+
+<form method="POST" action="/update.htm" target="progressFrame">
+
+Search String
+: <input id="search" type="text" name="other" maxlength="200" value="<?=$cfg['other']?>">
+
+<input type="button" name="submit_button" value="Search" onclick="openBox('<?=$cmd?>'+document.getElementById('search').value,'Docker Search')">
+
+
+Docker File To Convert
+: <input id="convert" type="text" name="other" maxlength="200" value="<?=$cfg['other']?>">
+
+<input type="button" name="submit_button" value="Convert" onclick="openBox('<?=$cmd1?>'+document.getElementById('convert').value,'Docker 2 XML',800,600)"><button type="button" onclick="done()">DONE</button>
+
+
+</form>

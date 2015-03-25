@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "docker_search">
 <!ENTITY author    "Squid">
-<!ENTITY version   "2015.03.23">
+<!ENTITY version   "2015.03.24">
 <!ENTITY launch    "Settings/Docker2XML">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/DockerSearch/master/DockerSearch.plg">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -12,6 +12,10 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
+###2015-03.24###
+-Added Full Docker Web Search
+-URL for conversion is now more forgiving.  URL can be any sub-page from the container's page
+
 ###2015.03.23###
 - Added another exception for how to add the port list, thanks to the unknowning assistance of SparklyBalls
 
