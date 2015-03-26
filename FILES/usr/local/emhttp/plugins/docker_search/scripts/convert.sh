@@ -224,11 +224,11 @@ fi
 
 echo "</Container>" >> $OUTPUT
 
-CONVERTED="/boot/config/plugins/dockerMan/templates/Docker2XML/$DOCKERFILENAME.xml"
+CONVERTED="/boot/config/plugins/dockerMan/templates-user/Docker2XML/$DOCKERFILENAME.xml"
 
-if [ ! -d /boot/config/plugins/dockerMan/templates/Docker2XML/ ]
+if [ ! -d /boot/config/plugins/dockerMan/templates-user/Docker2XML/ ]
 then
-	mkdir -p /boot/config/plugins/dockerMan/templates/Docker2XML/
+	mkdir -p /boot/config/plugins/dockerMan/templates-user/Docker2XML/
 fi
 
 echo ""
