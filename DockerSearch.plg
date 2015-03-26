@@ -100,9 +100,9 @@ The 'remove' script.
 <INLINE>
 
 removepkg &name;-&version;
-rm -r /usr/local/emhttp/plugins/&name;
-rm -r /boot/config/plugins/DockerSearch.plg
-rm /boot/config/plugins/&name;
+rm -r /usr/local/emhttp/plugins/docker_search
+rm -r /boot/config/plugins/docker_search
+rm /boot/config/plugins/DockerSearch.plg
 </INLINE>
 </FILE>
 
