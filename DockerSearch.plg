@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "docker_search">
 <!ENTITY author    "Squid">
-<!ENTITY version   "2015.03.25">
+<!ENTITY version   "2015.03.26">
 <!ENTITY launch    "Settings/Docker2XML">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/DockerSearch/master/DockerSearch.plg">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -12,7 +12,11 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
-###205.03.25###
+###2015.03.26###
+- Updated Icon (May have to clear browsing data to display the new one)
+- Fixed the uninstall routine.
+
+###2015.03.25###
 - Storage path for converted XML changed to templates-user/Docker2XML (Original location of templates was being erased anytime dockerMan checked for updates
 
 ###2015-03.24###
