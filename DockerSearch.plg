@@ -99,12 +99,10 @@ The 'remove' script.
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
 
-# Remove plugin related files
-rm -rf /boot/config/plugins/&name;
-rm -f /tmp/plugins/&name;.plg
-
-# Uninstall the 'source' package
 removepkg &name;-&version;
+rm -r /usr/local/emhttp/plugins/&name;
+rm -r /boot/config/plugins/&name;
+rm /boot/config/plugins/&name;
 </INLINE>
 </FILE>
 
