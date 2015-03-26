@@ -101,7 +101,7 @@ The 'remove' script.
 
 removepkg &name;-&version;
 rm -r /usr/local/emhttp/plugins/&name;
-rm -r /boot/config/plugins/&name;
+rm -r /boot/config/plugins/DockerSearch.plg
 rm /boot/config/plugins/&name;
 </INLINE>
 </FILE>
