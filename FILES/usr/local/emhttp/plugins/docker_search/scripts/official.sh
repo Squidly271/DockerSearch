@@ -22,7 +22,7 @@ echo "Container is $CONTAINER"
 echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>" > $OUTPUT
 echo "<Container>" >> $OUTPUT
 echo "<Name>$CONTAINER-instance</Name>" >> $OUTPUT
-echo "<Description>This is a barebones template for [strong]$CONTAINER[/strong][br][br]You will need to fully populate any required Volumes, Ports, and Environment variables for this container to function [br][br]Change the Name to suit[br][br]The REPOSITORY entry [strong]MUST[/strong] remain blank[br][br]If you wish to grab a specific version, append :TAG to the ExtraParameters Field eg: mysql:5.5" >> $OUTPUT
+echo "<Description>This is a barebones template for [strong]$CONTAINER[/strong][br][br]You will need to fully populate any required Volumes, Ports, and Environment variables for this container to function [br][br]Change the Name to suit[br][br]The REPOSITORY entry [strong]MUST[/strong] remain blank[br][br]If you wish to grab a specific version, append :TAG to the Repositories Field eg: mysql:5.5" >> $OUTPUT
 echo "</Description>" >> $OUTPUT
 echo "<Registry>$DOCKERFILE</Registry>" >> $OUTPUT
 echo "<Repository>$CONTAINER</Repository>" >> $OUTPUT
