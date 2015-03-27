@@ -46,7 +46,10 @@ if [[ "$DOCKERFILE" == "https://registry.hub.docker.com/_/"* ]]
 then
 	echo ""
         echo "<b>Official Status:    Official"
-	/usr/local/emhttp/plugins/docker_search/scripts/official.sh $DOCKERFILE
+        echo ""
+        echo "<b>Offical containers are not currently supported"
+	echo ""
+        echo "<b>Exiting"
         exit
 fi
 

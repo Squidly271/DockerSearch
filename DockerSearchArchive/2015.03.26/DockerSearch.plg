@@ -12,11 +12,6 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
-###2015.03.26-1###
-- Initial Release with support for Official containers
-- Removed the condensed search results page (redundant and useless)
-- Known Issue: Icon for Official containers will not display (Generic "?" displayed instead)
-
 ###2015.03.26###
 - Updated Icon (May have to clear browsing data to display the new one)
 - Fixed the uninstall routine.

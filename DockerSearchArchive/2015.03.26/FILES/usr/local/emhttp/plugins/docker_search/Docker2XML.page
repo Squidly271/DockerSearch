@@ -9,13 +9,14 @@ Icon="docker2xml.png"
 <font size=3>This plugin provides search and conversion functions for any docker container located at <u><a href=https://registry.hub.docker.com/ target=_blank>https://registry.hub.docker.com/</a></u>
 <br><br>
 After entering a search string and pressing "Search", a new window window will pop up with the results.<br>
+The results page is a condensed search which is limited to a maximum of 25 entries and only displays the results for searches of the repositories and container names.
 <br><br>
-After navigating to the appropriate container copy the URL in your browser and paste into the convert box and press Convert.
+A link is present on the results page to take you the full results of a web search on docker's website.
+<br><br>
+To convert the dockerfile to an unRaid compatible XML template file, copy the link (either from the condensed search results or the URL in your browser of the container if you did a full search and paste it into the convert box and press Convert.
 <br><br>
 The XML template will be available under Docker2XML when adding a new container.
 <br><br><br>
-Both Official and un-Official dockerfiles are supported.
-<br><br>
 Plugin Support Thread: <u><a href=http://lime-technology.com/forum/index.php?topic=38879.0 target=_blank>http://lime-technology.com/forum/index.php?topic=38879.0</a></u>
 <br><br><br>
 
@@ -26,11 +27,10 @@ Plugin Support Thread: <u><a href=http://lime-technology.com/forum/index.php?top
 
 <form method="POST" action="/update.htm" target="progressFrame">
 
-
 Search String
 : <input id="search" type="text" name="other" maxlength="200" value="<?=$cfg['other']?>">
 
-<input type="button" name="submit_button" value="Search" onclick="window.open('https://registry.hub.docker.com/search?q='+document.getElementById('search').value,'Docker Search')">
+<input type="button" name="submit_button" value="Search" onclick="openBox('<?=$cmd?>'+document.getElementById('search').value,'Docker Search')">
 
 
 Docker File To Convert
