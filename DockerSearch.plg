@@ -14,7 +14,7 @@
 <CHANGES>
 ###2015.03.27###
 - Fixed issue with Icons
-- Switched the container name & tag from extra parameters to Repository
+- Switched the container name  tag from extra parameters to Repository
 
 ###2015.03.26-1###
 - Initial Release with support for Official containers
