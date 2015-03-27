@@ -2,6 +2,12 @@
 
 DOCKER=$1
 
+if ! echo $DOCKER | grep "registry.hub.docker.com"
+then
+	echo "$DOCKER is not a valid entry"
+	exit 1
+fi
+
 echo "<b>Finding the correct path"
 echo ""
 
@@ -23,6 +29,15 @@ do
 	THIRDLAST=$(dirname $NEXTLAST)
 	FOURTHLAST=$(dirname $THIRDLAST)
 	FIFTHLAST=$(dirname $FOURTHLAST)
+
+	if [ $? -ne 0 ]
+	then
+		echo ""
+		echo "<strong>Not a valid Docker URL<strong>"
+		exit 1
+	fi
+
+
 	echo "$DOCKER"
 done
 
