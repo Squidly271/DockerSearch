@@ -38,5 +38,4 @@ Docker File To Convert
 
 <input type="button" name="submit_button" value="Convert" onclick="openBox('<?=$cmd1?>'+document.getElementById('convert').value,'Docker 2 XML',800,600)"><button type="button" onclick="done()">DONE</button>
 
-
 </form>

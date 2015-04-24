@@ -236,7 +236,7 @@ fi
 
 echo "</Container>" >> $OUTPUT
 
-CONVERTED="/boot/config/plugins/dockerMan/templates-user/Docker2XML/$DOCKERFILENAME.xml"
+CONVERTED="/boot/config/plugins/dockerMan/templates-user/docker2XML-$DOCKERFILENAME.xml"
 
 if [ ! -d /boot/config/plugins/dockerMan/templates-user/Docker2XML/ ]
 then
