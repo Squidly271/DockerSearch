@@ -92,6 +92,7 @@ The 'source' file.
 -->
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
 <URL>https://github.com/Squidly271/DockerSearch/raw/master/DockerSearch.txz</URL>
+<MD5>e947fcb875a481ddf8d76322d5dc5301</MD5>
 </FILE>
 
 
