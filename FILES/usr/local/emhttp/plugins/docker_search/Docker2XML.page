@@ -5,6 +5,15 @@ Icon="docker2xml.png"
 <?PHP
 /* Copyright 2015 Squid Software
  */
+$unraid = parse_ini_file("/etc/unraid-version");
+
+$execPath = "docker_search/";
+if ( strcmp( $unraid['version'], "6.1-rc2" ) < 0 ) {
+  $execPath = "/usr/local/sbin/docker_search/";
+}
+
+$cmd1 = 'convert.sh ';
+
 ?>
 <font size=3>This plugin provides search and conversion functions for any docker container located at <u><a href=https://registry.hub.docker.com/ target=_blank>https://registry.hub.docker.com/</a></u>
 <br><br>
@@ -21,8 +30,6 @@ Plugin Support Thread: <u><a href=http://lime-technology.com/forum/index.php?top
 
 <?PHP
 ?>
-<?$cmd = '/usr/local/emhttp/plugins/docker_search/scripts/search.sh ';?>
-<?$cmd1 = '/usr/local/emhttp/plugins/docker_search/scripts/convert.sh ';?>
 
 <form method="POST" action="/update.htm" target="progressFrame">
 
@@ -36,6 +43,6 @@ Search String
 Docker File To Convert
 : <input id="convert" type="text" name="other" maxlength="200" value="<?=$cfg['other']?>">
 
-<input type="button" name="submit_button" value="Convert" onclick="openBox('<?=$cmd1?>'+document.getElementById('convert').value,'Docker 2 XML',800,600)"><button type="button" onclick="done()">DONE</button>
+<input type="button" name="submit_button" value="Convert" onclick="openBox('<?=$execPath?><?=$cmd1?>'+document.getElementById('convert').value,'Docker 2 XML',800,600)"><button type="button" onclick="done()">DONE</button>
 
 </form>
