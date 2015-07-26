@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "docker_search">
 <!ENTITY author    "Squid">
-<!ENTITY version   "2015.04.23">
+<!ENTITY version   "2015.07.26">
 <!ENTITY launch    "Settings/Docker2XML">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/DockerSearch/master/DockerSearch.plg">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -12,6 +12,9 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
+###2015.07.26###
+- Hot fix for 6.1 RC2
+
 ###2015.04.23###
 - Fix an issue where dockerMan would display multiple templates-user folders due to plugin storing converted files in a sub-folder
 
@@ -92,7 +95,7 @@ The 'source' file.
 -->
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
 <URL>https://github.com/Squidly271/DockerSearch/raw/master/DockerSearch.txz</URL>
-<MD5>e947fcb875a481ddf8d76322d5dc5301</MD5>
+<MD5>93de165cbf6ee8ba828155cd9c03d3f0</MD5>
 </FILE>
 
 
