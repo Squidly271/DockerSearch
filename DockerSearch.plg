@@ -3,7 +3,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "docker_search">
 <!ENTITY author    "Squid">
-<!ENTITY version   "2015.07.26">
+<!ENTITY version   "2015.08.09">
 <!ENTITY launch    "Settings/Docker2XML">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/Squidly271/DockerSearch/master/DockerSearch.plg">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
@@ -105,7 +105,7 @@ The 'source' file.
 -->
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
 <URL>https://github.com/Squidly271/DockerSearch/raw/master/DockerSearch.txz</URL>
-<MD5>93de165cbf6ee8ba828155cd9c03d3f0</MD5>
+<MD5>b23493bd1c42915f009906a26ef22580</MD5>
 </FILE>
 
 
