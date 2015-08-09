@@ -12,6 +12,16 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;">
 
 <CHANGES>
+###2015.08.09###
+
+
+Plugin Deprecated
+Conversion routines do not function due to changes to Docker's website
+Uninstall this plugin
+Functionality of this plugin will be shortly added to the Community Applications plugin.
+
+
+
 ###2015.07.26###
 - Hot fix for 6.1 RC2
 
@@ -93,7 +103,7 @@ rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version
 <!--
 The 'source' file.
 -->
-<FILE Name="/boot/config/plugins/&name;/&name;.txz" Run="upgradepkg --install-new">
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
 <URL>https://github.com/Squidly271/DockerSearch/raw/master/DockerSearch.txz</URL>
 <MD5>93de165cbf6ee8ba828155cd9c03d3f0</MD5>
 </FILE>

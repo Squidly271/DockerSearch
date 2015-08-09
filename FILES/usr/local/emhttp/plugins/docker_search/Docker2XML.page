@@ -15,6 +15,9 @@ if ( strcmp( $unraid['version'], "6.1-rc2" ) < 0 ) {
 $cmd1 = 'convert.sh ';
 
 ?>
+<script>
+alert("This plugin is deprecated, and due to changes made to docker's website the conversion operation is now completely non-functional.   You should uninstall this plugin.  Functionality for this will soon be integrated into the Community Applications plugin");
+</script>
 <font size=3>This plugin provides search and conversion functions for any docker container located at <u><a href=https://registry.hub.docker.com/ target=_blank>https://registry.hub.docker.com/</a></u>
 <br><br>
 After entering a search string and pressing "Search", a new window window will pop up with the results.<br>
